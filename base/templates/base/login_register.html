@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% extends 'main.html' %} 
+<html>
+   <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+  </head> 
+  
+ <body>
+ {% block content %}
+ {% if page == 'login' %}
+   <div class="overlay">
+<!-- LOGN IN FORM by Omar Dsoky -->
+<form method="POST" action="">
+     {% csrf_token %}
+   <!--   con = Container  for items in the form-->
+   <div class="con">
+   <!--     Start  header Content  -->
+   <header class="head-form">
+      <h2>Log In</h2>
+      <!--     A welcome message or an explanation of the login form -->
+      <p>login here using your username and password</p>
+   </header>
+   <!--     End  header Content  -->
+   <br>
+   <div class="field-set">
+     
+      <!--   user name -->
+         <span class="input-item">
+           <i class="fa fa-envelope-o"></i>
+         </span>
+        <!--   user name Input-->
+         <input class="form-input" id="txt-input" type="email" name="email" placeholder="@UserName" required>
+     
+      <br>
+     
+           <!--   Password -->
+     
+      <span class="input-item">
+        <i class="fa fa-unlock-alt"></i>
+       </span>
+      <!--   Password Input-->
+      <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+     
+<!--      Show/hide password  -->
+     <span>
+        <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+     </span>
+      <br>
+<!--        buttons -->
+<!--      button LogIn -->
+  <div id="loggin">
+    <button type="submit" class="btn submit sign-in"> Login
+      <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </button>
+      </div>
+   </div>
+    
+  
+<!--   other buttons -->
+  
+<!--   End Conrainer  -->
+  </div>
+   <div class="other">
+<!--      Forgot Password button-->
+      <p class="btn submits frgt-pass">Forgot Password</p>
+<!--     Sign Up button -->
+     <a href="{% url 'register' %}"> 
+<!--         Sign Up font icon -->
+      <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
+     </a>
+<!--      End Other the Division -->
+   </div>
+  <!-- End Form -->
+</form>
+</div>
+
+<!-- REGISTER FORM -->
+{% else %}
+   <div class="overlay">
+<!-- LOGN IN FORM by Omar Dsoky -->
+<form method="POST" action="">
+{% csrf_token %}
+   <!--   con = Container  for items in the form-->
+   <div class="con">
+   <!--     Start  header Content  -->
+   <header class="head-form">
+      <h2>REGISTER</h2>
+   <p>login here using your username and password</p>
+   </header>
+   <!--     End  header Content  -->
+   <br>
+   <div class="field-set form-input">
+     {% for field in form %}
+     <div class="form_group">
+         <label for="">{{field.label}}</label>
+         {{field}}
+     </div>
+     {% endfor %}
+     
+<!--      button LogIn -->
+  <div id="loggin">
+    <button type="submit" class="btn submit sign-in"> Submit
+      <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </button>
+      </div>
+   </div>
+    
+<!--   End Conrainer  -->
+  </div>
+   <div class="other">
+<!--      Forgot Password button-->
+      <button class="btn submits frgt-pass">Forgot Password</button>
+<!--     Sign Up button -->
+      <button class="btn submitss sign-up">Sign Up 
+<!--         Sign Up font icon -->
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+      </button>
+<!--      End Other the Division -->
+   </div>
+  <!-- End Form -->
+</form>
+</div>
+ {% endif %}
+{% endblock %} 
+ </body>
+</html>
+
+
+
